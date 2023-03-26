@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import bcryptjs from 'bcryptjs'
+import bcrypt from 'bcrypt'
 
 const { Schema, model } = mongoose
 
@@ -19,7 +19,7 @@ userSchema.pre('save', async function (next) {
 
   if (currentUser.isModified('password')) {
     const plainPassword = currentUser.password
-    const hashedPassword = await bcryptjs.hash(plainPassword, 10)
+    const hashedPassword = await bcrypt.hash(plainPassword, 10)
     currentUser.password = hashedPassword
   }
   next()
@@ -29,7 +29,7 @@ userSchema.static('checkDetails', async function (email, password) {
   const user = await this.findOne({ email })
 
   if (user) {
-    const passwordMatch = await bcryptjs.compare(password, user.password)
+    const passwordMatch = await bcrypt.compare(password, user.password)
 
     if (passwordMatch) {
       return user
