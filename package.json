@@ -6,12 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-<<<<<<< Updated upstream
-    "dev": "nodemon -r dotenv/config -e js ./src/server.js"
-=======
     "dev": "nodemon -r dotenv/config -e js ./src/server.js",
     "start": "node -r dotenv/config ./src/server.js"
->>>>>>> Stashed changes
   },
   "repository": {
     "type": "git",
@@ -31,7 +27,8 @@
     "express": "^4.18.2",
     "http-errors": "^2.0.0",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.0.0"
+    "mongoose": "^7.0.0",
+    "stripe": "^11.15.0"
   },
   "devDependencies": {
     "dotenv": "^16.0.3",
