@@ -8,9 +8,10 @@ const userSchema = new Schema({
   lastName: { type: String, required: true },
   password: { type: String, required: true },
   email: { type: String, required: true },
-  address: { type: String, required: true },
-  city: { type: String, required: true },
+  address: { type: String },
+  city: { type: String },
   role: { type: String, required: true, default: 'customer' },
+  restaurantID: { type: Schema.Types.ObjectId, ref: 'restaurantModel' },
 })
 
 userSchema.pre('save', async function (next) {
