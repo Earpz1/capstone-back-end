@@ -8,7 +8,7 @@ import menuItemsRouter from '../api/menuItems/index.js'
 import ordersRouter from '../api/orders/index.js'
 
 const server = express()
-const port = process.env.PORT
+const port = process.env.PORT || 3001
 
 //Middleware
 server.use(cors())

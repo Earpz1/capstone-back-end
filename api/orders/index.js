@@ -98,7 +98,7 @@ ordersRouter.get(
       const orders = await ordersModel
         .find({
           restaurantID: request.params.restaurantID,
-          orderStatus: { $nin: ['Delivered', 'Awaiting Payment'] },
+          orderStatus: { $nin: ['Accepted', 'Delivered', 'Awaiting Payment'] },
         })
         .populate('customerID')
 
