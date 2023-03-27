@@ -11,16 +11,16 @@ const server = express()
 const port = process.env.PORT || 3001
 
 //Middleware
-const whitelist = ['http://localhost:3000']
+const whitelist = ['http://localhost:3000', 'https://digin-eosin.vercel.app']
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
+      callback(null, true)
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(new Error('Not allowed by CORS'))
     }
-  }
-};
+  },
+}
 
 server.use(cors(corsOptions))
 server.use(express.json())
