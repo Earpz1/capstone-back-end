@@ -110,6 +110,26 @@ ordersRouter.get(
 )
 
 ordersRouter.get(
+  '/:restaurantID/inProgress',
+  JWTMiddleware,
+  OwnerMiddleware,
+  async (request, response, next) => {
+    try {
+      const orders = await ordersModel
+        .find({
+          restaurantID: request.params.restaurantID,
+          orderStatus: { $nin: ['Pending', 'Awaiting Payment', 'Delivered'] },
+        })
+        .populate('customerID')
+
+      response.status(200).send(orders)
+    } catch (error) {
+      next()
+    }
+  },
+)
+
+ordersRouter.get(
   '/:restaurantID/delivered',
   JWTMiddleware,
   OwnerMiddleware,
